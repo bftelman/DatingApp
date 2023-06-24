@@ -9,6 +9,10 @@ import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AccountService } from '../services/account.service';
+import { TestErrorComponent } from './test-error/test-error.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
+import { ServerErrorComponent } from './server-error/server-error.component';
 
 @NgModule({
     imports: [
@@ -17,7 +21,8 @@ import { AccountService } from '../services/account.service';
             positionClass: 'toast-bottom-right'
         }),
         CommonModule,
-        HttpClientModule
+        HttpClientModule,
+        RouterModule
     ],
     exports: [
         HomeComponent,
@@ -30,7 +35,10 @@ import { AccountService } from '../services/account.service';
         MemberListComponent,
         MemberDetailComponent,
         ListsComponent,
-        MessagesComponent],
+        MessagesComponent,
+        TestErrorComponent,
+        NotFoundComponent,
+        ServerErrorComponent],
     providers: [AccountService],
 })
 export class PagesModule { }
