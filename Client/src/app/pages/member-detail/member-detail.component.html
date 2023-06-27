@@ -1,1 +1,121 @@
-<p>member-detail works!</p>
+<div class="row" *ngIf="member">
+  <div class="col-3">
+    <div class="card">
+      <img
+        [src]="member.photoUrl || './assets/user.png'"
+        [alt]="member.knownAs"
+        class="card-img-top img-thumbnail"
+      />
+      <div class="card-body">
+        <strong> Location: </strong>
+        <p class="card-text">{{ member.city }}, {{ member.country }}</p>
+        <strong> Age: </strong>
+        <p class="card-text">{{ member.age }}</p>
+        <strong> Last active: </strong>
+        <p class="card-text">{{ member.lastActive }}</p>
+        <strong> Member since: </strong>
+        <p class="card-text">{{ member.created }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-9">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#home-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="home-tab-pane"
+          aria-selected="true"
+        >
+          About {{ member.knownAs }}
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#profile-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="profile-tab-pane"
+          aria-selected="false"
+        >
+          Interests
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="contact-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#contact-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="contact-tab-pane"
+          aria-selected="false"
+        >
+          Photos
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="contact-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#contact-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="contact-tab-pane"
+          aria-selected="false"
+        >
+          Messages
+        </button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div
+        class="tab-pane fade show active pt-2"
+        id="home-tab-pane"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+        tabindex="0"
+      >
+        <h4>Description</h4>
+        <p> {{ member.introduction }}</p>
+      </div>
+      <div
+        class="tab-pane fade pt-2"
+        id="profile-tab-pane"
+        role="tabpanel"
+        aria-labelledby="profile-tab"
+        tabindex="0"
+      >
+        <h4> Interests </h4>
+        <p> {{ member.interests }}</p>
+      </div>
+      <div
+        class="tab-pane fade py-2"
+        id="contact-tab-pane"
+        role="tabpanel"
+        aria-labelledby="contact-tab"
+        tabindex="0"
+      >
+        <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+      </div>
+      <div
+        class="tab-pane fade py-2"
+        id="disabled-tab-pane"
+        role="tabpanel"
+        aria-labelledby="disabled-tab"
+        tabindex="0"
+      >
+        <p> Messages will go here </p>
+      </div>
+    </div>
+  </div>
+</div>

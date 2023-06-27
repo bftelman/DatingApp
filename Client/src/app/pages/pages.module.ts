@@ -13,6 +13,7 @@ import { TestErrorComponent } from './test-error/test-error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { ServerErrorComponent } from './server-error/server-error.component';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { ServerErrorComponent } from './server-error/server-error.component';
         }),
         CommonModule,
         HttpClientModule,
-        RouterModule
+        RouterModule,
+        NgxGalleryModule
     ],
     exports: [
         HomeComponent,
