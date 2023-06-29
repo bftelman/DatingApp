@@ -1,4 +1,15 @@
 <div class="row" *ngIf="member">
+  <div class="col-4">
+    <h1>Your profile</h1>
+  </div>
+  <div class="col-8">
+    <div class="alert alert-info" *ngIf="editForm.dirty">
+      <p>
+        <strong>Information: </strong> You have made changes. Any unsaved
+        changes will be lost
+      </p>
+    </div>
+  </div>
   <div class="col-3">
     <div class="card">
       <img
@@ -17,10 +28,7 @@
         <p class="card-text">{{ member.created }}</p>
       </div>
       <div class="card-footer">
-        <div class="btn-group d-flex">
-          <button class="btn btn-primary">Like</button>
-          <button class="btn btn-success">Messages</button>
-        </div>
+        <button class="btn btn-success col-12" form="editForm" type="submit" [disabled]="!editForm.dirty">Save changes</button>
       </div>
     </div>
   </div>
@@ -51,35 +59,7 @@
           aria-controls="profile-tab-pane"
           aria-selected="false"
         >
-          Interests
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          class="nav-link"
-          id="contact-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#contact-tab-pane"
-          type="button"
-          role="tab"
-          aria-controls="contact-tab-pane"
-          aria-selected="false"
-        >
-          Photos
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          class="nav-link"
-          id="contact-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#contact-tab-pane"
-          type="button"
-          role="tab"
-          aria-controls="contact-tab-pane"
-          aria-selected="false"
-        >
-          Messages
+          Edit photo
         </button>
       </li>
     </ul>
@@ -91,8 +71,46 @@
         aria-labelledby="home-tab"
         tabindex="0"
       >
-        <h4>Description</h4>
-        <p>{{ member.introduction }}</p>
+        <form #editForm="ngForm" (ngSubmit)="updateMember()" id="editForm">
+          <h4 class="mt-2">Description</h4>
+          <textarea
+            class="form-control"
+            [(ngModel)]="member.introduction"
+            rows="6"
+            name="introduction"
+          ></textarea>
+          <h4 class="mt-2">Looking for</h4>
+          <textarea
+            class="form-control"
+            [(ngModel)]="member.lookingFor"
+            rows="6"
+            name="lookingFor"
+          ></textarea>
+          <h4 class="mt-2">Interests</h4>
+          <textarea
+            class="form-control"
+            [(ngModel)]="member.interests"
+            rows="6"
+            name="interests"
+          ></textarea>
+          <h4 class="mt-2">Location details</h4>
+          <div class="d-flex flex-grow align-items-center">
+            <label for="city" class="form-label"> City: </label>
+            <input
+              type="text"
+              class="form-control mx-2"
+              name="city"
+              [(ngModel)]="member.city"
+            />
+            <label for="country" class="form-label"> Country: </label>
+            <input
+              type="text"
+              class="form-control mx-2"
+              name="country"
+              [(ngModel)]="member.country"
+            />
+          </div>
+        </form>
       </div>
       <div
         class="tab-pane fade pt-2"
@@ -100,32 +118,7 @@
         role="tabpanel"
         aria-labelledby="profile-tab"
         tabindex="0"
-      >
-        <h4>Interests</h4>
-        <p>{{ member.interests }}</p>
-      </div>
-      <div
-        class="tab-pane fade py-2"
-        id="contact-tab-pane"
-        role="tabpanel"
-        aria-labelledby="contact-tab"
-        tabindex="0"
-      >
-        <ngx-gallery
-          [options]="galleryOptions"
-          [images]="galleryImages"
-          class="ngx-gallery"
-        ></ngx-gallery>
-      </div>
-      <div
-        class="tab-pane fade py-2"
-        id="disabled-tab-pane"
-        role="tabpanel"
-        aria-labelledby="disabled-tab"
-        tabindex="0"
-      >
-        <p>Messages will go here</p>
-      </div>
+      > Photo edit will go here </div>
     </div>
   </div>
 </div>

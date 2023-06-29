@@ -14,6 +14,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { MemberEditComponent } from './member-edit/member-edit.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
     imports: [
@@ -24,7 +27,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
         CommonModule,
         HttpClientModule,
         RouterModule,
-        NgxGalleryModule
+        NgxGalleryModule,
+        FormsModule,
     ],
     exports: [
         HomeComponent,
@@ -40,7 +44,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
         MessagesComponent,
         TestErrorComponent,
         NotFoundComponent,
-        ServerErrorComponent],
+        ServerErrorComponent,
+        MemberEditComponent],
     providers: [AccountService],
 })
 export class PagesModule { }
