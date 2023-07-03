@@ -21,7 +21,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     UiModule,
     PagesModule,
-    NgxSpinnerModule.forRoot({type: 'line-scale-party'})
+    NgxSpinnerModule.forRoot({type: 'line-scale-party'}),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
